@@ -12,6 +12,8 @@ public class AlgorithmC {
 	public static int currentStart = 0;
 	public static int currentStop = 0;
 	public static Block block;
+	public static int numLines = 0;
+	public static boolean keepGoing = true;
 
 	public static void main(String[] args) {
 		input = "tiny.in";
@@ -20,14 +22,21 @@ public class AlgorithmC {
 		currentLine++;
 		currentStop += currentStart + Integer.parseInt(getLine((currentStart), input));
 		currentStart++;
-		//grabInput(input);
-		debugs();
+		//debugs();
+		numLines = getNumLines(input);
 
-		block = grabBlock(currentStart, currentStop, input);
-		block.print();
-		
+		for(int i = 0; i < numBlocks; i ++){
+			block = grabBlock(currentStart, currentStop, input);
+			if(block != null){
+				System.out.println("Printing block: " + i);
+				block.print();
+				System.out.println();
+				System.out.println("The next block will start at line: " + currentStart);
+				System.out.println("The next block will stop reading at line:" + currentStop);
+				System.out.println();
+			}
+		}
 		debugs();
-		
 	}
 
 	private static Block grabBlock(int start, int stop, String str) {
@@ -36,10 +45,10 @@ public class AlgorithmC {
 		int numStudents = 0;
 		int rows = 0;
 		int cols = 0;
-		int[][] thisShell;
-		
-		int index = 0;
 		String strLine = "";
+		if(start > numLines || stop > numLines){
+			System.out.println("You should stop here, bro");
+		}
 
 		while (start <= stop){
 			strLine = getLine(start, str);
@@ -50,7 +59,6 @@ public class AlgorithmC {
 				continue;
 			}
 			if (tokens.length == 1){
-				currentStart = index;
 				currentStop += Integer.parseInt(tokens[0]);
 				numStudents = Integer.parseInt(tokens[0]);
 				continue;
@@ -67,6 +75,10 @@ public class AlgorithmC {
 			al.add(line);
 		}
 		currentStart = start + 1;
+		if(currentStart >= numLines){
+			keepGoing = false;
+			return null;
+		}
 		numStudents = rows = Integer.parseInt(getLine((start), input));
 		currentStop = start + numStudents;
 		cols = maxLength;
@@ -84,8 +96,9 @@ public class AlgorithmC {
 
 	private static void debugs() {
 		System.out.println("Number of blocks is: " + numBlocks);
-		System.out.println("The next block will start at line: " + currentStart);
-		System.out.println("The next block will stop reading at line:" + currentStop);
+		System.out.println("Number of lines in the file is: " + numLines);
+		
+		
 	}
 
 	private static String getLine(int line, String string) {
@@ -98,6 +111,25 @@ public class AlgorithmC {
 				br.readLine();
 			}
 			result = br.readLine();
+			in.close();
+			fstream.close();
+		}
+		catch (Exception e){
+			System.err.println("Error: " + e.getMessage());
+		}
+		return result;
+	}
+
+	private static int getNumLines(String string) {
+		int result = 0;
+		try {
+			FileInputStream fstream = new FileInputStream(string);
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+			while(br.readLine() != null){
+				result++;
+			}
 			in.close();
 			fstream.close();
 		}
