@@ -28,15 +28,54 @@ public class AlgorithmC {
 		for(int i = 0; i < numBlocks; i ++){
 			block = grabBlock(currentStart, currentStop, input);
 			if(block != null){
-				System.out.println("Printing block: " + i);
-				block.print();
-				System.out.println();
-				System.out.println("The next block will start at line: " + currentStart);
-				System.out.println("The next block will stop reading at line:" + currentStop);
-				System.out.println();
+//				System.out.println("Printing block: " + i);
+//				block.print();
+//				System.out.println();
+//				System.out.println("The next block will start at line: " + currentStart);
+//				System.out.println("The next block will stop reading at line:" + currentStop);
+//				System.out.println();
+				int unsatisfied = findUnsatisfied();
+				while(unsatisfied >1){
+					doReveals();
+					ArrayList arr = findDistances();
+					findNext(arr);
+					pruneCycles();
+					doTrades();
+					unsatisfied = findUnsatisfied();
+				}
 			}
 		}
-		debugs();
+//		debugs();
+	}
+
+	private static void doTrades() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void pruneCycles() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void findNext(ArrayList arr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static ArrayList findDistances() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static void doReveals() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static int findUnsatisfied() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	private static Block grabBlock(int start, int stop, String str) {
