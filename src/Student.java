@@ -1,13 +1,11 @@
 import java.util.ArrayList;
-import java.util.Collection;
-
 
 public class Student {
-	public static ArrayList<ArrayList<Integer>> tierList = new ArrayList<ArrayList<Integer>>();
-	public static int id;
-	public static int classSize;
-	public static int numTiers;
-	public static int maxTierSize = 0;
+	public ArrayList<ArrayList<Integer>> tierList = new ArrayList<ArrayList<Integer>>();
+	public int id;
+	public int classSize;
+	public int numTiers;
+	public int maxTierSize = 0;
 
 
 	public Student(String s, int index){
@@ -33,12 +31,13 @@ public class Student {
 	public void print2Darrayints(){
 	
 		for(ArrayList<Integer> i : tierList){
-			//System.out.println();
+			System.out.print("[");
 			
 			for(int j : i){	
 				System.out.print( "[" + j + "]");
 			}
-			//System.out.println();
+			System.out.print("]");
+			System.out.println();
 		}
 		
 	}

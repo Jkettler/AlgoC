@@ -13,7 +13,7 @@ public class AlgorithmC {
 	public static void main(String[] args) {
 		input = "tiny.in";
 		String current = "";
-		
+
 
 		try {
 			FileInputStream fstream = new FileInputStream(input);
@@ -24,29 +24,37 @@ public class AlgorithmC {
 			while (current != null){
 				current = br.readLine();
 				if(current != null){
-					ArrayList<Student> U = new ArrayList<Student>();	//our "left hand side", U	
-					int[] V;
-					int maxTiers = 0;
+
 					if(current.length() == 1){
 						numStudentsCurrentBlock = Integer.parseInt(current);
 						System.out.println("numStudentsCurrentBlock is: " + numStudentsCurrentBlock);
-						U = new ArrayList<Student>();	//our "left hand side", U	
-						V = new int[numStudentsCurrentBlock];
-					}
+						//U = new ArrayList<Student>();	//our "left hand side", U	
+						//V = new int[numStudentsCurrentBlock];
 
+					}
+					ArrayList<Student> U = new ArrayList<Student>();	//our "left hand side", U	
+					int[] V = null;
+					int maxTiers = 0;
+					Student temp;
 					for(int i = 0; i < numStudentsCurrentBlock; i++){
 						current = br.readLine();
-						Student temp = new Student(current, i);
+						temp = new Student(current, i);
 						if (temp.numTiers > maxTiers) maxTiers = temp.numTiers;
-//						System.out.println("Adding student: " + i + " whose prefList is: " );
-//						temp.print2Darrayints();
-						System.out.println(temp.numTiers + " tiers, the longest of which is: " + temp.maxTierSize);
-						U.add(temp);
-						V = new int[numStudentsCurrentBlock];
+						U.add(temp);	
 					}
+					for(int i = 0; i < U.size(); i++){
+						System.out.println("printing student: " + i );
+						U.get(i).print2Darrayints();
+					}
+					V = new int[numStudentsCurrentBlock];
+					initialize(V);
+
+					U.trimToSize();
 					System.out.println("U contains: " + U.size() + " students, the longest of which numTiers = " + maxTiers);
-					
+					//runAlgorithm(U, V);	
 				}
+
+
 			};
 
 			in.close();
@@ -55,6 +63,17 @@ public class AlgorithmC {
 		catch (Exception e){
 			System.err.println("Error: " + e.getMessage());
 		}
+	}
+
+	private static void initialize(int[] v) {
+		for(int i = 0; i < v.length; i++){
+			v[i] = i;
+		}
+	}
+
+	private static void runAlgorithm(ArrayList<Student> u, int[] v) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
