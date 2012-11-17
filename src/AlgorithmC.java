@@ -40,7 +40,8 @@ public class AlgorithmC {
 						current = br.readLine();
 						temp = new Student(current, i);
 						if (temp.numTiers > maxTiers) maxTiers = temp.numTiers;
-						U.add(temp);	
+						U.add(temp);
+						System.out.println("Outs is: " + temp.outs);
 					}
 					for(int i = 0; i < U.size(); i++){
 						System.out.println("printing student: " + i );
@@ -73,7 +74,10 @@ public class AlgorithmC {
 	}
 
 	private static void runAlgorithm(ArrayList<Student> u, int[] v) {
-		// TODO Auto-generated method stub
+		ArrayList<Student> unsatisfied = u;
+		while(unsatisfied.size() >= 1){
+			
+		}
 
 	}
 
