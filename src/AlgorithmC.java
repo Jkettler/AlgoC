@@ -51,7 +51,8 @@ public class AlgorithmC {
 
 					U.trimToSize();
 					System.out.println("U contains: " + U.size() + " students, the longest of which numTiers = " + maxTiers);
-					//runAlgorithm(U, V);	
+					//runAlgorithm(U, V);
+					
 				}
 
 
