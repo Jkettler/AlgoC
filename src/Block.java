@@ -23,7 +23,7 @@ public class Block {
 		me = this;
 	}
 
-	
+
 
 	public Block(int[][] in) {
 		rows = in.length;
@@ -37,7 +37,7 @@ public class Block {
 			result.placeRow(al.get(j), j);			
 		}
 		return result;
-	}
+	}	
 
 	public Preference getPref(int index){
 		int[] temp = new int[this.cols];
@@ -49,15 +49,15 @@ public class Block {
 	}
 
 
-	public Student getStudent(int index){
-		int[] temp = new int[this.cols];
-		for(int i = 0; i < this.cols; i++){
-			temp[i] = this.thisShell[index][i];
-		}
-		Preference p = new Preference(temp, index);
-		Student result = new Student(p, index);
-		return result;
-	}
+//	public Student getStudent(int index){
+//		int[] temp = new int[this.cols];
+//		for(int i = 0; i < this.cols; i++){
+//			temp[i] = this.thisShell[index][i];
+//		}
+//		Preference p = new Preference(temp, index);
+//		Student result = new Student(p, index);
+//		return result;
+//	}
 
 
 	public int getNumStudents(){
