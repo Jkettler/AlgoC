@@ -43,6 +43,9 @@ public class Student {
 		}
 
 	}
+	public boolean outsHaz(int target){
+		return this.outs.contains(target);
+	}
 
 	//	public String print1Darraystrings(){
 	//		for(int i = 0; i < )

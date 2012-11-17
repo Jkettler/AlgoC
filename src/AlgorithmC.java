@@ -75,7 +75,12 @@ public class AlgorithmC {
 	private static void runAlgorithm(ArrayList<Student> u, int[] v) {
 		ArrayList<Student> unsatisfied = u;
 		while(unsatisfied.size() >= 1){
-			
+			for(int i = 0; i < unsatisfied.size(); i++){
+				Student temp = unsatisfied.get(i);
+				if(temp.outsHaz(temp.id)){
+					unsatisfied.remove(temp);
+				}
+			}
 		}
 
 	}
