@@ -43,6 +43,20 @@ public class Student {
 		}
 
 	}
+	
+	public String toString(){
+		String out= "Student= "+id+ " ";
+		for(ArrayList<Integer> i : tierList){
+			out+="[";
+
+			for(int j : i){	
+				out+= "[" + j + "]";
+			}
+//			out+="]\n";
+		}
+		return out;
+	}
+	
 	public boolean outsHaz(int target){
 		return this.outs.contains(target);
 	}

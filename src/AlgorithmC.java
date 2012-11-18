@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -13,7 +14,6 @@ public class AlgorithmC {
 	public static void main(String[] args) {
 		input = "tiny.in";
 		String current = "";
-
 
 		try {
 			FileInputStream fstream = new FileInputStream(input);
@@ -49,11 +49,11 @@ public class AlgorithmC {
 					}
 					V = new int[numStudentsCurrentBlock];
 					initialize(V);
-
 					U.trimToSize();
 					System.out.println("U contains: " + U.size() + " students, the longest of which numTiers = " + maxTiers);
-					//runAlgorithm(U, V);
-					
+					ArrayList E = new ArrayList();
+					Configuration initialConfig = new Configuration(U,V,E);
+					runAlgorithm(initialConfig);
 				}
 
 
@@ -73,15 +73,9 @@ public class AlgorithmC {
 		}
 	}
 
-	private static void runAlgorithm(ArrayList<Student> u, int[] v) {
-		ArrayList<Student> unsatisfied = u;
-		while(unsatisfied.size() >= 1){
-			for(int i = 0; i < unsatisfied.size(); i++){
-				Student temp = unsatisfied.get(i);
-				if(temp.outsHaz(temp.id)){
-					unsatisfied.remove(temp);
-				}
-			}
+	private static void runAlgorithm(Configuration initial) {
+		while(initial.unsatisfied.size() >= 1){
+			initial.updateUnsatisfied();
 		}
 
 	}
