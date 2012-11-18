@@ -4,7 +4,6 @@ public class Configuration {
 	ArrayList<Student> students;
 	int[] spaces;
 	ArrayList edges;
-	ArrayList out;
 	ArrayList<Student> unsatisfied;
 	ArrayList<Student> satisfied;
 	
@@ -12,7 +11,6 @@ public class Configuration {
 		students = u;
 		spaces =v;
 		edges = e;
-		out = new ArrayList();
 		students.size();
 		unsatisfied = u;
 		satisfied = new ArrayList<Student>();
@@ -23,6 +21,7 @@ public class Configuration {
 			Student temp = unsatisfied.get(i);
 			if(temp.outsHaz(temp.id)){
 				unsatisfied.remove(temp);
+				satisfied.add(temp);
 				i -=1;
 			}
 		}
@@ -62,10 +61,6 @@ public class Configuration {
 		out+="\nedges= ";
 		for(int i =0; i<edges.size(); i++){
 			out+= edges.get(i) + " ";
-		}
-		out+="\nout= ";
-		for(int i =0; i<this.out.size(); i++){
-			out+= this.out.get(i) + " ";
 		}
 		out+="\nunsatisfied= ";
 		for(int i =0; i<unsatisfied.size(); i++){

@@ -6,9 +6,8 @@ public class Student {
 	public int classSize;
 	public int numTiers;
 	public int maxTierSize = 0;
-	public ArrayList<Integer> outs = new ArrayList<Integer>();
+	public ArrayList<Integer> out;
 	public int hopefulTier;
-
 
 	public Student(String s, int index){
 		id = index;
@@ -27,21 +26,8 @@ public class Student {
 			tierList.add((ArrayList<Integer>) temp2);
 		}
 		tierList.trimToSize();
-		outs = tierList.get(hopefulTier);
-	}
-
-	public void print2Darrayints(){
-
-		for(ArrayList<Integer> i : tierList){
-			System.out.print("[");
-
-			for(int j : i){	
-				System.out.print( "[" + j + "]");
-			}
-			System.out.print("]");
-			System.out.println();
-		}
-
+		out = new ArrayList<Integer>();
+		out = tierList.get(hopefulTier);
 	}
 	
 	public String toString(){
@@ -52,17 +38,13 @@ public class Student {
 			for(int j : i){	
 				out+= "[" + j + "]";
 			}
-//			out+="]\n";
+			out+="] ";
 		}
 		return out;
 	}
 	
 	public boolean outsHaz(int target){
-		return this.outs.contains(target);
+		return this.out.contains(target);
 	}
-
-	//	public String print1Darraystrings(){
-	//		for(int i = 0; i < )
-	//	}
 
 }

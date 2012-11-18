@@ -41,11 +41,11 @@ public class AlgorithmC {
 						temp = new Student(current, i);
 						if (temp.numTiers > maxTiers) maxTiers = temp.numTiers;
 						U.add(temp);
-						System.out.println("Outs is: " + temp.outs);
+						System.out.println("Outs is: " + temp.out);
 					}
 					for(int i = 0; i < U.size(); i++){
 						System.out.println("printing student: " + i );
-						U.get(i).print2Darrayints();
+						System.out.println(U.get(i));//.print2Darrayints();
 					}
 					V = new int[numStudentsCurrentBlock];
 					initialize(V);
@@ -75,7 +75,19 @@ public class AlgorithmC {
 
 	private static void runAlgorithm(Configuration initial) {
 		while(initial.unsatisfied.size() >= 1){
+			//updates unsatisfied list
 			initial.updateUnsatisfied();
+			
+			//performs reveals
+			
+			//compute distances
+			
+			//determine next/ make students pick a room
+			
+			//find cycles in pruned
+			
+			//perform trades and remove students from unsatisfied
+			
 		}
 
 	}
