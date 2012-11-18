@@ -7,11 +7,11 @@ public class Student {
 	public int numTiers;
 	public int maxTierSize = 0;
 	public ArrayList<Integer> out;
-	public int hopefulTier;
+	public int currentTier;
 
 	public Student(String s, int index){
 		id = index;
-		hopefulTier = 0;
+		currentTier = 0;
 		String[] tempStringTierList = s.trim().split("\\s-1\\s");
 		numTiers = tempStringTierList.length;
 		for(int t = 0; t < numTiers; t++){
@@ -27,7 +27,7 @@ public class Student {
 		}
 		tierList.trimToSize();
 		out = new ArrayList<Integer>();
-		out = tierList.get(hopefulTier);
+		out = tierList.get(currentTier);
 	}
 	
 	public String toString(){
@@ -46,5 +46,13 @@ public class Student {
 	public boolean outsHaz(int target){
 		return this.out.contains(target);
 	}
-
+	
+	public ArrayList<Integer> getEdgesOfTier(int tiernum){
+		return tierList.get(tiernum);
+	}
+	
+	public void finishedOut(int target){
+		out= new ArrayList<Integer>();
+		out.add(target);
+	}
 }

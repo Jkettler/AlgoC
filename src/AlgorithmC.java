@@ -45,13 +45,13 @@ public class AlgorithmC {
 					}
 					for(int i = 0; i < U.size(); i++){
 						System.out.println("printing student: " + i );
-						System.out.println(U.get(i));//.print2Darrayints();
+						System.out.println(U.get(i));
 					}
 					V = new int[numStudentsCurrentBlock];
 					initialize(V);
 					U.trimToSize();
 					System.out.println("U contains: " + U.size() + " students, the longest of which numTiers = " + maxTiers);
-					ArrayList E = new ArrayList();
+					ArrayList<int[]> E = new ArrayList<int[]>();
 					Configuration initialConfig = new Configuration(U,V,E);
 					runAlgorithm(initialConfig);
 				}
@@ -74,20 +74,21 @@ public class AlgorithmC {
 	}
 
 	private static void runAlgorithm(Configuration initial) {
-		while(initial.unsatisfied.size() >= 1){
-			//updates unsatisfied list
-			initial.updateUnsatisfied();
-			
+		initial.initialUpdateUnsatisfied();
+		while(initial.getUnsatisified().size() >= 1){		
+			System.out.println(initial);
 			//performs reveals
-			
+			initial.performReveals();
 			//compute distances
-			
-			//determine next/ make students pick a room
-			
+			initial.distance();
+			//pruned (determine next/ make students pick a room)
+			initial.pruned();
 			//find cycles in pruned
 			
 			//perform trades and remove students from unsatisfied
+			initial.trade();
 			
+			//updates unsatisfied list
 		}
 
 	}
