@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class Student {
 	public ArrayList<ArrayList<Integer>> tierList = new ArrayList<ArrayList<Integer>>();
 	public int id;
-	public int classSize;
 	public int numTiers;
 	public int maxTierSize = 0;
 	public ArrayList<Integer> out;
 	public int currentTier;
+	public boolean satisfied;
 
 	public Student(String s, int index){
 		id = index;
@@ -28,6 +28,7 @@ public class Student {
 		tierList.trimToSize();
 		out = new ArrayList<Integer>();
 		out = tierList.get(currentTier);
+		satisfied = false;
 	}
 	
 	public String toString(){
@@ -43,16 +44,7 @@ public class Student {
 		return out;
 	}
 	
-	public boolean outsHaz(int target){
-		return this.out.contains(target);
-	}
-	
 	public ArrayList<Integer> getEdgesOfTier(int tiernum){
 		return tierList.get(tiernum);
-	}
-	
-	public void finishedOut(int target){
-		out= new ArrayList<Integer>();
-		out.add(target);
 	}
 }

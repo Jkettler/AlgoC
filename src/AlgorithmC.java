@@ -28,8 +28,6 @@ public class AlgorithmC {
 					if(current.length() == 1){
 						numStudentsCurrentBlock = Integer.parseInt(current);
 						System.out.println("numStudentsCurrentBlock is: " + numStudentsCurrentBlock);
-						//U = new ArrayList<Student>();	//our "left hand side", U	
-						//V = new int[numStudentsCurrentBlock];
 
 					}
 					ArrayList<Student> U = new ArrayList<Student>();	//our "left hand side", U	
@@ -48,11 +46,12 @@ public class AlgorithmC {
 						System.out.println(U.get(i));
 					}
 					V = new int[numStudentsCurrentBlock];
-					initialize(V);
+					for(int i = 0; i < V.length; i++){
+						V[i] = i;
+					}
 					U.trimToSize();
 					System.out.println("U contains: " + U.size() + " students, the longest of which numTiers = " + maxTiers);
-					ArrayList<int[]> E = new ArrayList<int[]>();
-					Configuration initialConfig = new Configuration(U,V,E);
+					Configuration initialConfig = new Configuration(U,V);
 					runAlgorithm(initialConfig);
 				}
 
@@ -67,15 +66,10 @@ public class AlgorithmC {
 		}
 	}
 
-	private static void initialize(int[] v) {
-		for(int i = 0; i < v.length; i++){
-			v[i] = i;
-		}
-	}
-
 	private static void runAlgorithm(Configuration initial) {
-		initial.initialUpdateUnsatisfied();
-		while(initial.getUnsatisified().size() >= 1){		
+		
+		while(initial.unsatisfied.size() >= 1){
+			initial.removeSatisfied();
 			System.out.println(initial);
 			//performs reveals
 			initial.performReveals();
