@@ -71,12 +71,14 @@ public class AlgorithmC {
 		while(initial.unsatisfied.size() >= 1){
 			initial.removeSatisfied();
 			System.out.println(initial);
+			//compute distances
+			initial.calcDistance();
+			//find next
+			int spaceNext = initial.findNext();
+			//pruned (make students pick a room)
+			initial.pruned(spaceNext);
 			//performs reveals
 			initial.performReveals();
-			//compute distances
-			initial.distance();
-			//pruned (determine next/ make students pick a room)
-			initial.pruned();
 			//find cycles in pruned
 			
 			//perform trades and remove students from unsatisfied
